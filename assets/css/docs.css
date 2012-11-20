@@ -1,0 +1,87 @@
+body > .navbar .brand {
+	padding-right: 0;
+	padding-left: 0;
+	margin-left: 20px;
+	float: right;
+	font-weight: bold;
+	color: black;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .1), 0 0 30px rgba(255, 255, 255, .125);
+	-webkit-transition: all .2s linear;
+	-moz-transition: all .2s linear;
+	transition: all .2s linear;
+}
+
+body > .navbar {
+	font-size: 13px;
+	border-bottom:1px solid black;
+}
+
+.navbar-inverse {
+	color: #999;
+}
+.navbar {
+	color: #777;
+}
+
+#sidebar {
+	position: fixed;
+	left: 0;
+	top: 42px;
+	width: 224px;
+	height: 100%;
+	z-index: 10;
+	-webkit-user-select: none;
+	border-right: 1px solid black;
+	background: #222;
+}
+
+.blockList a {
+	background: #1B1B1B;
+	display: block;
+	border-top: 1px solid #333;
+	border-bottom:1px solid #000;
+	cursor: pointer;
+	font-size:15px;
+	color: #CCC;
+	padding: 11px 0 11px 11px;
+}
+
+.blockList a:hover {
+	text-decoration: none;
+	background: #222;
+	color: white;
+}
+
+.blockList ul,
+.blockList ul li {
+	margin:0;
+	padding:0;
+	cursor: pointer;
+}
+
+.blockList ul li {
+	list-style-type:none;
+	color: #AAA;
+	padding: 6px 0 6px 6px;
+	border-top: 1px solid #111;
+	border-bottom:1px solid #060606;
+	background: #171717;
+}
+
+.blockList ul li + li {
+	border-top: 1px solid #1D1D1D;
+}
+
+.blockList ul li:last-child {
+	border-bottom:none;
+}
+
+.blockList ul li:hover {
+	background: #1B1B1B;
+	color: white;
+}
+
+#content {
+	background: red;
+	margin: 42px 0 0 224px;
+}
