@@ -1,9 +1,63 @@
+// Silde Binder
 $(document).ready(function(){
-	$(".blockList a[data-toggle]").each(function(){
+	// init catalog
+	var sidebar = $("#sidebar .blockList");
+	for(var one in catalog) {
+		var item = catalog[one];
+		
+		var title = item["title"];
+		var $a = $("<a></a>");
+		$a.html(title);
+		$a.attr("slide-toggle", title);
+		sidebar.append($a);
+		
+		var $ul = $("<ul></ul>");
+		$ul.attr("slide-target", title);
+		sidebar.append($ul);
+		
+		var children = item["children"];
+		for(var two in children) {
+			var item = children[two];
+			
+			var subtitle = item["title"];
+			var url = item["url"];
+			var $li = $("<li></li>");
+			$li.html(subtitle);
+			if(url == null)
+				$li.data("path", title + "/" + subtitle + ".html");
+			else
+				$li.data("path", url);
+			$ul.append($li);
+			
+			$li.click(function(){
+				$("#content").empty();
+				$.get($(this).data("path"), function(data){
+					$("#content").html(data);
+				});
+			});
+		}
+	}
+	bindView();
+});
+
+function bindView() {
+	$("[slide-toggle]").each(function(){
+		if($(this).data("slide") == "slide") return;
+		$(this).data("slide", "slide");
 		$(this).click(function(){
-			var data = $(this).attr("data-toggle");
-			$(".blockList ul[data-target=" + data + "]").slideToggle("fast");
+			var data = $(this).attr("slide-toggle");
+			$("[slide-target=" + data + "]").slideToggle("fast");
 		});
 	});
-	$(".blockList ul[data-target]").css("display", "none");
-});
+	$("[slide-target]").css("display", "none");
+}
+
+function bindJSON(object, url, data, callback) {
+	$.getJSON(url, data, function(data){
+		for(var one in data) {
+			var value = data[one];
+			object[one] = value;
+		}
+		callback(object);
+	});
+}
