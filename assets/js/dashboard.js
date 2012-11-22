@@ -23,15 +23,16 @@ $(document).ready(function(){
 			var url = item["url"];
 			var $li = $("<li></li>");
 			$li.html(subtitle);
-			if(url == null)
+			if(url == undefined) {
 				$li.data("path", title + "/" + subtitle + ".html");
-			else
+			} else {
 				$li.data("path", url);
+			}
 			$ul.append($li);
 			
 			$li.click(function(){
 				$("#content").empty();
-				$.get($(this).data("path"), function(data){
+				$.get($(this).data("path"),{rnd: Math.random()}, function(data){
 					$("#content").html(data);
 				});
 			});
