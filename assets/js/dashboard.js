@@ -54,11 +54,15 @@ function bindView() {
 }
 
 function bindJSON(object, url, data, callback) {
-	$.getJSON(url, data, function(data){
-		for(var one in data) {
-			var value = data[one];
-			object[one] = value;
+	$.getJSON(url, data, function(mydata){
+		if(object != null) {
+			for(var one in mydata) {
+				var value = mydata[one];
+				object[one] = value;
+			}
+			callback(object);
+		} else {
+			callback(mydata);
 		}
-		callback(object);
 	});
 }
