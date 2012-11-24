@@ -1,26 +1,58 @@
-body > .navbar .brand {
-	padding-right: 0;
-	padding-left: 0;
-	margin-left: 20px;
-	float: right;
-	font-weight: bold;
-	color: black;
-	text-shadow: 0 1px 0 rgba(255, 255, 255, .1), 0 0 30px rgba(255, 255, 255, .125);
-	-webkit-transition: all .2s linear;
-	-moz-transition: all .2s linear;
-	transition: all .2s linear;
+#navbar {
+	background-color: #1B1B1B;
+	background-image: -moz-linear-gradient(top,#222,#111);
+	background-image: -webkit-gradient(linear,0 0,0 100%,from(#222),to(#111));
+	background-image: -webkit-linear-gradient(top,#222,#111);
+	background-image: -o-linear-gradient(top,#222,#111);
+	background-image: linear-gradient(to bottom,#222,#111);
+	background-repeat: repeat-x;
+	border-color: #252525;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222',endColorstr='#ff111111',GradientType=0);
+	min-height: 41px;
+	border-bottom: 1px solid #111;
+	
+	position: fixed;
+	right: 0;
+	top:0;
+	left: 0;
+	z-index: 1030;
+	margin-bottom: 0;
 }
 
-body > .navbar {
+#navbar ul {
+	position: relative;
+	left: 0;
+	display: block;
+	float: left;
+	margin: 0 10px 0 0;
+	padding: 0;
+}
+
+#navbar ul li {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-size: 13px;
-	border-bottom:1px solid black;
+	float: left;
 }
 
-.navbar-inverse {
-	color: #999;
+#navbar ul li.active {
+	background: #050505;
 }
-.navbar {
-	color: #777;
+
+#navbar ul li.active a {
+	color: white;
+}
+
+#navbar ul li a {
+	color: #999;
+	float: none;
+	padding: 10px 15px 10px;
+	text-decoration: none;
+	display: block;
+}
+
+#navbar ul li a:hover {
+	color: white;
+	background: transparent;
 }
 
 #sidebar {
@@ -81,6 +113,28 @@ body > .navbar {
 	color: white;
 }
 
+.blockList ul li.bind_selectedItem {
+	color: white;
+	font-weight: bolder;
+}
+
 #content {
 	margin: 42px 0 0 224px;
+	padding: 10px;
+	height: 400px;
+}
+
+.table .header {
+	background-image: url(../img/sort_bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+
+.table .headerSortUp {
+	background-image: url(../img/sort_asc.gif);
+}
+
+.table .headerSortDown {
+	background-image: url(../img/sort_desc.gif);
 }

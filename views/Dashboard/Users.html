@@ -1,13 +1,19 @@
-﻿<div id="container"></div>
+﻿<div id="container">
+	<div id="user_chart"></div>
+	<div id="user_table"><table id="myTable" class="table table-bordered"></table></div>
+</div>
 
 <script>
-$(function () {
-	var chart;
-	$(document).ready(function() {
+$(document).ready(function() {
+	addScriptFiles([
+		{"name": "jquery.tablesorter", "path": "../assets/jquery/tablesorter/jquery.tablesorter.js"}
+	], function(){
+		var chart;
+		
 		object = {
 			credits: {enabled: false},
 			chart: {
-				renderTo: 'container',
+				renderTo: 'user_chart',
 				type: 'line',
 				marginRight: 130,
 				marginBottom: 25
@@ -39,8 +45,12 @@ $(function () {
 			}
 		}
 		
-		bindJSON(object, "../mockup/users.txt", {}, function(data){
+		bindJSON(object, "../mockup/users.txt", {rnd: (new Date()).getTime()}, function(data){
 			chart = new Highcharts.Chart(data);
+		});
+		
+		bindJSONtoTable($("#myTable"), "../mockup/users_table.txt", {rnd: (new Date()).getTime()}, function(table){
+			table.tablesorter();
 		});
 	});
 });

@@ -1,7 +1,7 @@
 ﻿<div id="container"></div>
 
 <script>
-$(function () {
+	var timer;
 	$(document).ready(function() {
 		var chart;
 		
@@ -46,20 +46,22 @@ $(function () {
 	
 						// set up the updating of the chart each second
 						var series = this.series[0];
-						setInterval(function() {
-								bindJSON(null, "../mockup/device.php", {time: (new Date()).getTime()}, function(data){
-									series.addPoint([data["x"], data["y"]], true, true);
-								});
+						timer = setInterval(function() {
+							$.getJSON("../mockup/device.php", {time: (new Date()).getTime()}, function(data){
+								series.addPoint([data["x"], data["y"]], true, true);
+							});
 						}, 1000);
 					}
 				}
 			}
 		}
 		
-		bindJSON(object, "../mockup/device.php", {}, function(data){
+		bindJSON(object, "../mockup/device.php", {rnd: (new Date()).getTime()}, function(data){
 			chart = new Highcharts.Chart(data);
 		});
 	});
 	
-});
+	function closeView() {
+		clearInterval(timer);
+	}
 </script>

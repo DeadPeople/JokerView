@@ -1,3 +1,5 @@
+var scriptLists = new Object();
+
 // Silde Binder
 $(document).ready(function(){
 	// init catalog
@@ -24,24 +26,36 @@ $(document).ready(function(){
 			var $li = $("<li></li>");
 			$li.html(subtitle);
 			if(url == undefined) {
-				$li.data("path", title + "/" + subtitle + ".html");
+				$li.attr("data-path", title + "/" + subtitle + ".html");
 			} else {
-				$li.data("path", url);
+				$li.attr("data-path", url);
 			}
 			$ul.append($li);
-			
-			$li.click(function(){
-				$("#content").empty();
-				$.get($(this).data("path"),{rnd: Math.random()}, function(data){
-					$("#content").html(data);
-				});
-			});
 		}
 	}
 	bindView();
 });
 
 function bindView() {
+	// bind click open view
+	$("[data-path]").click(function(){
+		// highlight selected target
+		$("[data-path]").removeClass("bind_selectedItem");
+		$(this).addClass("bind_selectedItem");
+		
+		// close current view
+		try {
+			closeView();
+		} catch(err) {}
+		
+		// display the target view
+		$("#content").empty();
+		$.get($(this).attr("data-path"),{rnd: Math.random()}, function(data){
+			$("#content").html(data);
+		});
+	});
+	
+	// bind slide target
 	$("[slide-toggle]").each(function(){
 		if($(this).data("slide") == "slide") return;
 		$(this).data("slide", "slide");
@@ -53,6 +67,7 @@ function bindView() {
 	$("[slide-target]").css("display", "none");
 }
 
+// bind json data to an object
 function bindJSON(object, url, data, callback) {
 	$.getJSON(url, data, function(mydata){
 		if(object != null) {
@@ -60,9 +75,109 @@ function bindJSON(object, url, data, callback) {
 				var value = mydata[one];
 				object[one] = value;
 			}
-			callback(object);
+			if(callback != undefined) callback(object);
 		} else {
-			callback(mydata);
+			if(callback != undefined) callback(mydata);
 		}
 	});
+}
+
+// bind data to a table
+function bindJSONtoTable(table, url, data, callback) {
+	if(table.is('table')) {
+		$.getJSON(url, data, function(mydata){
+			var data_header = null;
+			var data_series = null;
+			
+			var $thead = $("<thead></thead>");
+			table.append($thead);
+			var $tbody = $("<tbody></tbody>");
+			table.append($tbody);
+			
+			for(var one in mydata) { // init for the table data
+				var item = mydata[one];
+				
+				if(item["categories"] != null && item["categories"] != undefined) {
+					data_header = item["categories"];
+				}
+				
+				if(one == "series") {
+					data_series = item;
+				}
+			} // end for
+			
+			var hasName = false;
+			
+			if(data_header != null) { // add title for the table
+				var $tr = $("<tr></tr>");
+				$thead.append($tr);
+				$tr.append("<th></th>");
+				
+				for(var i = 0; i < data_header.length; i++) {
+					var value = data_header[i];
+					
+					
+					var $th = $("<th></th>");
+					$th.html(value);
+					$tr.append($th);
+				}
+			}
+			if(data_series != null) { // add data into tbody
+				for(var i = 0 ; i < data_series.length ; i++) {
+					var divItem = data_series[i];
+					var $tr = $("<tr></tr>");
+					$tbody.append($tr);
+					
+					var $title = $("<td></td>");
+					$tr.append($title);
+					if(divItem["name"] != undefined) {
+						$title.html(divItem["name"]);
+						hasName = true;
+					}
+					
+					for(var j = 0 ; j < divItem["data"].length ; j++) {
+						var value = divItem["data"][j];
+						
+						var $td = $("<td></td>");
+						$td.html(value);
+						$tr.append($td);
+					}
+				}
+			}
+			
+			if(!hasName) { // rm title cell if not exist
+				$thead.find("tr").find("th:first").remove();
+				$tbody.find("tr").find("td:first").remove();
+			}
+			
+			if(callback != undefined) callback(table);
+		});
+	}
+}
+
+// add script files in the document(scriptFiles is array {name: name, path: path})
+function addScriptFiles(scriptFiles, callback) {
+	var inProcess = scriptFiles.length;
+	
+	for (var i = 0; i < scriptFiles.length ; i++) {
+		var script = scriptFiles[i];
+		
+		addScriptFile(script["name"], script["path"], function(){
+			inProcess--;
+			
+			if(inProcess == 0) {
+				callback();
+			}
+		});
+	}
+}
+
+// add a script file in the document(only can add once)
+function addScriptFile(name, path, callback) {
+	if(scriptLists[name] == null || scriptLists[name] == undefined) {
+		scriptLists[name] = path;
+		$.getScript(path, callback);
+	} else {
+		if(callback != undefined) callback();
+	}
 }
