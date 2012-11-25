@@ -9,7 +9,12 @@ $(document).ready(function(){
 		
 		var title = item["title"];
 		var $a = $("<a></a>");
-		$a.html(title);
+		var $icon = $("<img/>");
+		$icon.attr("src", "../assets/img/CatalogIcons/" + title + ".png");
+		$a.append($icon);
+		var $title = $("<span></span>");
+		$title.html(title);
+		$a.append($title);
 		$a.attr("slide-toggle", title);
 		sidebar.append($a);
 		
@@ -24,7 +29,12 @@ $(document).ready(function(){
 			var subtitle = item["title"];
 			var url = item["url"];
 			var $li = $("<li></li>");
-			$li.html(subtitle);
+			var $icon = $("<img/>");
+			$icon.attr("src", "../assets/img/CatalogIcons/" + title + "/" + subtitle + ".png");
+			$li.append($icon);
+			var $subtitle = $("<span></span>");
+			$subtitle.html(subtitle);
+			$li.append($subtitle);
 			if(url == undefined) {
 				$li.attr("data-path", title + "/" + subtitle + ".html");
 			} else {
@@ -33,7 +43,17 @@ $(document).ready(function(){
 			$ul.append($li);
 		}
 	}
+	$("img").error(function(){
+		$(this).attr("src", "../assets/img/CatalogIcons/default.png");
+		$(this).unbind();
+	});
 	bindView();
+	
+	// auto container size
+	$(window).resize(function() {
+		refreshView();
+	});
+	refreshView();
 });
 
 function bindView() {
@@ -65,6 +85,12 @@ function bindView() {
 		});
 	});
 	$("[slide-target]").css("display", "none");
+}
+
+function refreshView() {
+	$("#bodyContainer").height($("body").height() - $("#navbar").height() - 1);
+	$("#content").width($("body").width() - $("#sidebar").width() - 21);
+	$("#content").height($("#bodyContainer").height() - 20);
 }
 
 // bind json data to an object
