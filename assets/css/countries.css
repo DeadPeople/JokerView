@@ -1,0 +1,5 @@
+.component #my_parts .cntry {
+	display: inline-block;
+	width: 19.5%;
+	border-right: 1px solid gray;
+}

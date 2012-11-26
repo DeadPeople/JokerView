@@ -1,4 +1,5 @@
 var scriptLists = new Object();
+var cssLists = new Object();
 
 // Silde Binder
 $(document).ready(function(){
@@ -206,4 +207,21 @@ function addScriptFile(name, path, callback) {
 	} else {
 		if(callback != undefined) callback();
 	}
+}
+
+// add a CSS file in the document(only can add once)
+function addCSSFile(name, path) {
+	if(cssLists[name] == null || cssLists[name] == undefined) {
+		cssLists[name] = path;
+		var css = '<link rel="stylesheet" href="' + path + '" />';
+		$("head").append(css);
+	}
+}
+
+// rm CSS file in the document
+function rmCSSFile(name) {
+	var cssPath = cssLists[name];
+	$("head link").each(function(){
+		if($(this).attr("href") == cssPath) $(this).remove();
+	});
 }

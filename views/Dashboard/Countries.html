@@ -1,0 +1,20 @@
+<div class="component">
+	<h2>My Parts</h2>
+	<div id="my_parts">
+		<div class="cntry">US</div>
+		<div class="cntry">CA</div>
+		<div class="cntry">UE</div>
+		<div class="cntry">AS</div>
+		<div class="cntry">CN</div>
+	</div>
+</div>
+
+<script>
+$(document).ready(function() {
+	addCSSFile("countries", "../assets/css/countries.css");
+});
+
+function closeView() {
+	rmCSSFile("countries");
+}
+</script>
