@@ -1,5 +1,37 @@
+#navbar {
+	display:none;
+}
+
+.component #my_parts {
+	position: relative;
+	height: 100px;
+}
+
 .component #my_parts .cntry {
 	display: inline-block;
-	width: 19.5%;
+	width: 20%;
 	border-right: 1px solid gray;
+	background: #F4F4F4;
+	margin: 0;
+	float: left;
+	height: 100%;
+}
+
+.component #my_parts .cntry:last-child {
+	position: absolute;
+	right: 0;
+	border-left: 1px solid gray;
+	border-right: none;
+}
+
+.component #my_parts .cntry h2 {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+.component #my_parts .cntry p {
+	width: 100%;
+	background: red;
+	text-align: center;
 }

@@ -212,8 +212,8 @@ function addScriptFile(name, path, callback) {
 // add a CSS file in the document(only can add once)
 function addCSSFile(name, path) {
 	if(cssLists[name] == null || cssLists[name] == undefined) {
-		cssLists[name] = path;
-		var css = '<link rel="stylesheet" href="' + path + '" />';
+		cssLists[name] = path + "?rnd=" + Math.random();
+		var css = '<link rel="stylesheet" href="' + cssLists[name] + '" />';
 		$("head").append(css);
 	}
 }
@@ -221,7 +221,10 @@ function addCSSFile(name, path) {
 // rm CSS file in the document
 function rmCSSFile(name) {
 	var cssPath = cssLists[name];
-	$("head link").each(function(){
-		if($(this).attr("href") == cssPath) $(this).remove();
-	});
+	if(cssPath != undefined) {
+		$("head link").each(function(){
+			if($(this).attr("href") == cssPath) $(this).remove();
+		});
+		cssLists[name] = undefined;
+	}
 }
