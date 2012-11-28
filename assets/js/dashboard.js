@@ -1,5 +1,6 @@
 var scriptLists = new Object();
 var cssLists = new Object();
+var cur_css = "";
 
 // Silde Binder
 $(document).ready(function(){
@@ -9,6 +10,7 @@ $(document).ready(function(){
 		var item = catalog[one];
 		
 		var title = item["title"];
+		var open = item["open"] == true;
 		var $a = $("<a></a>");
 		var $icon = $("<img/>");
 		$icon.attr("src", "../assets/img/CatalogIcons/" + title + ".png");
@@ -21,6 +23,7 @@ $(document).ready(function(){
 		
 		var $ul = $("<ul></ul>");
 		$ul.attr("slide-target", title);
+		if(open) $ul.attr("slide-open", "");
 		sidebar.append($ul);
 		
 		var children = item["children"];
@@ -29,6 +32,7 @@ $(document).ready(function(){
 			
 			var subtitle = item["title"];
 			var url = item["url"];
+			var css = item["css"];
 			var $li = $("<li></li>");
 			var $icon = $("<img/>");
 			$icon.attr("src", "../assets/img/CatalogIcons/" + title + "/" + subtitle + ".png");
@@ -40,6 +44,11 @@ $(document).ready(function(){
 				$li.attr("data-path", title + "/" + subtitle + ".html");
 			} else {
 				$li.attr("data-path", url);
+			}
+			if(css == undefined) {
+				$li.attr("data-css", title + "/" + subtitle + ".css");
+			} else {
+				$li.attr("data-css", css);
 			}
 			$ul.append($li);
 		}
@@ -65,12 +74,17 @@ function bindView() {
 		$(this).addClass("bind_selectedItem");
 		
 		// close current view
+		rmCSSFile(cur_css);
 		try {
 			closeView();
 		} catch(err) {}
 		
 		// display the target view
 		$("#content").empty();
+		
+		cur_css = $(this).attr("data-css");
+		addCSSFile($(this).attr("data-css"), "../assets/css/"+$(this).attr("data-css"));
+		
 		$.get($(this).attr("data-path"),{rnd: Math.random()}, function(data){
 			$("#content").html(data);
 		});
@@ -85,7 +99,11 @@ function bindView() {
 			$("[slide-target=" + data + "]").slideToggle("fast");
 		});
 	});
-	$("[slide-target]").css("display", "none");
+	$("[slide-target]").each(function(){
+		if($(this).attr("slide-open") == undefined) 
+			$(this).css("display", "none");
+	});
+	
 }
 
 function refreshView() {

@@ -221,3 +221,7 @@ body {
 #content table.component thead tr {
 	background: #E9E9E9;
 }
+
+.dropdown-menu a {
+	cursor: pointer;
+}
