@@ -1,4 +1,4 @@
-<div id="topbar" class="btn-toolbar">
+﻿<div id="topbar" class="btn-toolbar">
 	<div class="btn-group">
 		<button class="btn dropdown-toggle" data-toggle="dropdown">MCUP <span class="caret"></span></button>
 		<ul class="dropdown-menu">
@@ -27,9 +27,120 @@
 
 <div class="component">
 	<h2>My Demo</h2>
-	<div>
+	<div id="myContent" class="content">
 		<div id="myChart">
 			
 		</div>
+		<div id="myTable">
+			<table>
+				<thead>
+					<tr>
+						<th width="25"></th>
+						<th></th>
+						<th>Actual</th>
+						<th>WOW</th>
+						<th>YOY</th>
+						<th width="25"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td></td>
+						<td>RUV</td>
+						<td>1.2%</td>
+						<td>2.3%</td>
+						<td>2.56%</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>ASE</td>
+						<td>1.2%</td>
+						<td>2.3%</td>
+						<td>2.56%</td>
+						<td></td>
+					</tr>
+					<tr slide-toggle="DEA">
+						<td><i class="icon-plus"></i></td>
+						<td>HAHAHA</td>
+						<td>1.2%</td>
+						<td>2.3%</td>
+						<td>2.56%</td>
+						<td><i class="icon-align-justify"></i></td>
+					</tr>
+					<tr slide-target="DEA">
+						<td></td>
+						<td>-</td>
+						<td>1.2%</td>
+						<td>2.3%</td>
+						<td>2.56%</td>
+						<td></td>
+					</tr>
+					<tr slide-target="DEA">
+						<td></td>
+						<td>-</td>
+						<td>1.2%</td>
+						<td>2.3%</td>
+						<td>2.56%</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>EAE</td>
+						<td>1.2%</td>
+						<td>2.3%</td>
+						<td>2.56%</td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
+
+<script>
+$(document).ready(function() {
+	var chart;
+	
+	object = {
+		credits: {enabled: false},
+		chart: {
+			renderTo: 'myChart',
+			type: 'line',
+			marginRight: 130,
+			marginBottom: 25
+		},
+		title: {
+			text: 'Monthly Average Temperature'
+		},
+		subtitle: {
+			text: 'Source: WorldClimate.com'
+		},
+		yAxis: {
+			title: {
+				text: 'Temperature (°C)'
+			}
+		},
+		tooltip: {
+			formatter: function() {
+					return '<b>'+ this.series.name +'</b><br/>'+
+					this.x +': '+ this.y +'°C';
+			}
+		},
+		legend: {
+			layout: 'vertical',
+			align: 'right',
+			verticalAlign: 'top',
+			x: -10,
+			y: 100,
+			borderWidth: 0
+		}
+	}
+	
+	bindJSON(object, "../mockup/users.txt", {rnd: (new Date()).getTime()}, function(data){
+		chart = new Highcharts.Chart(data);
+	});
+	
+	$("#myTable table").slideView(0);
+});
+</script>

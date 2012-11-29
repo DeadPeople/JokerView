@@ -11,8 +11,32 @@
 	background: #DDD;
 }
 
-#myChart {
+#myContent {
 	height: 250px;
-	background: #DDD;
-	width: 50%;
+}
+
+#myChart,
+#myTable {
+	margin:0;
+	display: inline-block;
+	height: 250px;
+	width: 49%;
+	float: left;
+}
+#myTable {
+	float: right;
+}
+
+#myTable table {
+	width: 100%;
+	table-layout:fixed;
+}
+
+#myTable table td,
+#myTable table td + td + td {
+	text-align: center;
+}
+
+#myTable table td + td {
+	text-align: left;
 }
