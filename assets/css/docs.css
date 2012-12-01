@@ -98,6 +98,11 @@ body {
 	text-shadow: 0 1px 0px black;
 }
 
+.blockList a img,
+.blockList li img {
+	vertical-align: middle; 
+}
+
 .blockList ul,
 .blockList ul li {
 	margin:0;
@@ -123,6 +128,7 @@ body {
 .blockList ul li span {
 	vertical-align:middle;
 	text-shadow: 0 1px 0px black;
+	font-size: 14px;
 }
 
 .blockList ul li + li {
@@ -180,7 +186,7 @@ body {
 
 #content .component {
 	border: 1px solid #888;
-	border-radius: 5px;
+	border-radius: 5px 5px 0 0;
 	margin-bottom: 20px;
 	box-shadow: 0 3px 3px #CCC;
 }

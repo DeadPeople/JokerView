@@ -11,27 +11,31 @@
 	background: #DDD;
 }
 
-#myContent {
-	height: 250px;
-}
-
 #myChart,
 #myTable {
 	margin:0;
 	display: inline-block;
-	height: 250px;
-	width: 49%;
+	width: 50%;
 	float: left;
 }
+
+#myChart {
+	height: 250px;
+}
+
 #myTable {
+	max-height: 248px;
+	overflow-y: auto;
 	float: right;
 }
 
 #myTable table {
 	width: 100%;
 	table-layout:fixed;
+	margin: 0;
 }
 
+#myTable table th,
 #myTable table td,
 #myTable table td + td + td {
 	text-align: center;

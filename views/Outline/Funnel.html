@@ -23,16 +23,45 @@
 	</div>
 </div>
 
-<div id="SankeyDiagram" class="component">
+<div id="cart" class="component">
+	<h2>CART</h2>
+	<div class="content clearfix">
+		<div id="atc" class="view">
+			<div id="atc_chart" class="chart"></div>
+			<h3>ATC</h3>
+			<p>Second line of text</p>
+		</div>
+		<div id="ryc" class="view">
+			<div id="ryc_chart" class="chart"></div>
+			<h3>RYC</h3>
+			<p>Second line of text</p>
+		</div>
+		<div id="cyc" class="view">
+			<div id="cyc_chart" class="chart"></div>
+			<h3>CYC</h3>
+			<p>Second line of text</p>
+		</div>
+		<div id="cyp" class="view">
+			<div id="cyp_chart" class="chart"></div>
+			<h3>CYP</h3>
+			<p>Second line of text</p>
+		</div>
+		<div class="view end"></div>
+	</div>
 </div>
 
-<div class="component">
-	<h2>My Demo</h2>
-	<div id="myContent" class="content clearfix">
-		<div id="myChart">
-			
+<div id="radiosView" class="component">
+	<div class="content clearfix">
+		<div id="radios">
+			<label class="radio"><input type="radio" name="optionsRadios" checked>Test1</label>
+			<label class="radio"><input type="radio" name="optionsRadios" >Test2</label>
+			<label class="radio"><input type="radio" name="optionsRadios" >Test3</label>
+			<label class="radio"><input type="radio" name="optionsRadios" >Test4</label>
+			<label class="radio"><input type="radio" name="optionsRadios" >Test5</label>
+			<label class="radio"><input type="radio" name="optionsRadios" >Test6</label>
+			<label class="radio"><input type="radio" name="optionsRadios" >Test7</label>
 		</div>
-		<div id="myTable">
+		<div id="tables">
 			<table class="table table-bordered table-condensed table-striped">
 				<thead>
 					<tr>
@@ -130,44 +159,38 @@ $(document).ready(function() {
 	object = {
 		credits: {enabled: false},
 		chart: {
-			renderTo: 'myChart',
-			type: 'line',
-			marginRight: 130,
-			marginBottom: 25
-		},
-		title: {
-			text: 'Monthly Average Temperature'
-		},
-		subtitle: {
-			text: 'Source: WorldClimate.com'
-		},
-		yAxis: {
+				renderTo: 'container',
+				type: 'line'
+			},
 			title: {
-				text: 'Temperature (°C)'
+				text: ''
+			},
+			yAxis: {
+				title: {
+					text: ''
+				}
+			},
+		exporting: {
+			buttons: {
+				printButton: {enabled: false},
+				exportButton: {enabled: false}
 			}
-		},
-		tooltip: {
-			formatter: function() {
-					return '<b>'+ this.series.name +'</b><br/>'+
-					this.x +': '+ this.y +'°C';
-			}
-		},
-		legend: {
-			layout: 'vertical',
-			align: 'right',
-			verticalAlign: 'top',
-			x: -10,
-			y: 100,
-			borderWidth: 0
 		}
 	}
 	
 	bindJSON(object, "../mockup/users.txt", {rnd: (new Date()).getTime()}, function(data){
+		data["chart"]["renderTo"] = "atc_chart";
+		chart = new Highcharts.Chart(data);
+		data["chart"]["renderTo"] = "ryc_chart";
+		chart = new Highcharts.Chart(data);
+		data["chart"]["renderTo"] = "cyc_chart";
+		chart = new Highcharts.Chart(data);
+		data["chart"]["renderTo"] = "cyp_chart";
 		chart = new Highcharts.Chart(data);
 	});
 	
 	$("#ddl_company").dropDown();
 	$("#ddl_country").dropDown();
-	$("#myTable table").slideView(0);
+	$("#tables table").slideView(0);
 });
 </script>
