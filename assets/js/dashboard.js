@@ -58,12 +58,6 @@ $(document).ready(function(){
 		$(this).unbind();
 	});
 	bindView();
-	
-	// auto container size
-	$(window).resize(function() {
-		refreshView();
-	});
-	refreshView();
 });
 
 function bindView() {
@@ -103,13 +97,6 @@ function bindView() {
 		if($(this).attr("slide-open") == undefined) 
 			$(this).css("display", "none");
 	});
-	
-}
-
-function refreshView() {
-	$("#bodyContainer").height($("body").height() - $("#navbar").height() - 1);
-	$("#content").width($("body").width() - $("#sidebar").width() - 21);
-	$("#content").height($("#bodyContainer").height() - 20);
 }
 
 // bind json data to an object
