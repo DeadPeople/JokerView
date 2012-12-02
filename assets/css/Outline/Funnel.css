@@ -8,7 +8,7 @@
 
 #cart .content {
 	text-align: justify;
-	font-size: 0;
+	letter-spacing: -3px;
 	padding: 10px;
 }
 
@@ -23,13 +23,14 @@
 
 #cart .content .view .chart {
 	height: 250px;
+	letter-spacing: 0px;
 }
 
 #cart .content .view h3,
 #cart .content .view p {
 	text-align: center;
 	line-height: 150%;
-	font-size: 14px;
+	letter-spacing: 0px;
 }
 
 #cart .content .view.end {
