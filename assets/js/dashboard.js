@@ -81,6 +81,10 @@ function bindView() {
 		
 		$.get($(this).attr("data-path"),{rnd: Math.random()}, function(data){
 			$("#content").html(data);
+			
+			// move the operation bar into navgation bar
+			$("#navInsert").empty();
+			$("#operationBar").appendTo($("#navInsert"));
 		});
 	});
 	
