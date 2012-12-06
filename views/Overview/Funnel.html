@@ -1,29 +1,4 @@
-﻿<div id="topbar" class="btn-toolbar">
-	<div id="ddl_company" class="btn-group">
-		<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="title">Site</span> <span class="caret"></span></button>
-		<ul class="dropdown-menu">
-			<li><a>MCUP</a></li>
-			<li><a>MUCP</a></li>
-		</ul>
-	</div>
-
-	<div id="ddl_country" class="btn-group">
-		<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="title">Country</span> <span class="caret"></span></button>
-		<ul class="dropdown-menu">
-			<li><a>US</a></li>
-			<li><a>UE</a></li>
-			<li><a>CA</a></li>
-		</ul>
-	</div>
-	
-	<div id="dateType" class="btn-group" data-toggle="buttons-radio">
-		<a class="btn">Day</a>
-		<a class="btn active">Week</a>
-		<a class="btn">Month</a>
-	</div>
-</div>
-
-<div id="cart" class="component">
+﻿<div id="cart" class="component">
 	<h2>CART</h2>
 	<div class="content clearfix">
 		<div id="atc" class="view">
@@ -189,8 +164,6 @@ $(document).ready(function() {
 		chart = new Highcharts.Chart(data);
 	});
 	
-	$("#ddl_company").dropDown();
-	$("#ddl_country").dropDown();
 	$("#tables table").slideView(0);
 });
 </script>

@@ -21,16 +21,17 @@ body {
 }
 
 #navbar.absoluteView {
-	height: 40px;
+	height: 34px;
+	padding: 3px 3px 0 3px;
 }
 
 #sidebar.absoluteView {
-	margin-top: 41px;
+	margin-top: 38px;
 	width: 224px;
 }
 
 #content.absoluteView {
-	margin-top: 41px; 
+	margin-top: 38px; 
 	margin-left: 224px;
 }
 
@@ -38,51 +39,36 @@ body {
 
 #navbar {
 	background-color: #1B1B1B;
-	background-image: -moz-linear-gradient(top,#222,#111);
-	background-image: -webkit-gradient(linear,0 0,0 100%,from(#222),to(#111));
-	background-image: -webkit-linear-gradient(top,#222,#111);
-	background-image: -o-linear-gradient(top,#222,#111);
-	background-image: linear-gradient(to bottom,#222,#111);
+	background-image: -moz-linear-gradient(top,#444,#222);
+	background-image: -webkit-gradient(linear,0 0,0 100%,from(#444),to(#222));
+	background-image: -webkit-linear-gradient(top,#444,#222);
+	background-image: -o-linear-gradient(top,#444,#222);
+	background-image: linear-gradient(to bottom,#444,#222);
 	background-repeat: repeat-x;
 	border-color: #252525;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222',endColorstr='#ff111111',GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff444444',endColorstr='#ff222222',GradientType=0);
 	border-bottom: 1px solid #111;
 }
 
-#navbar ul {
-	position: relative;
-	left: 0;
-	display: block;
-	float: left;
-	margin: 0 10px 0 0;
-	padding: 0;
+#navbar ul.dropdown-menu {
+	background: #222;
 }
 
-#navbar ul li {
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-size: 13px;
-	float: left;
-}
-
-#navbar ul li.active {
-	background: #050505;
-}
-
-#navbar ul li.active a {
+#navbar ul.dropdown-menu li a {
 	color: white;
 }
 
-#navbar ul li a {
-	color: #999;
-	float: none;
-	padding: 10px 15px 10px;
-	text-decoration: none;
-	display: block;
+#navbar ul.dropdown-menu li a:hover {
+	background: #333;
 }
 
-#navbar ul li a:hover {
-	color: white;
-	background: transparent;
+#navbar #commonNav,
+#navbar #navInsert {
+	display: inline;
+}
+
+#navbar #dateType {
+	float: right;
 }
 
 .blockList a {
@@ -100,6 +86,18 @@ body {
 	font-size:15px;
 	color: #AAA;
 	padding: 11px 0 11px 11px;
+}
+
+.blockList a.bind_selectedItem,
+.blockList a:hover.bind_selectedItem {
+	color: white;
+	
+	background:#1E401C;
+	background-image: -moz-linear-gradient(top,#3E603C,#1E401C);
+	background-image: -webkit-gradient(linear,0 0,0 100%,from(#3E603C),to(#1E401C));
+	background-image: -webkit-linear-gradient(top,#3E603C,#1E401C);
+	background-image: -o-linear-gradient(top,#3E603C,#1E401C);
+	background-image: linear-gradient(to bottom,#3E603C,#1E401C);
 }
 
 .blockList a:hover {

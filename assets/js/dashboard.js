@@ -11,6 +11,11 @@ $(document).ready(function(){
 		
 		var title = item["title"];
 		var open = item["open"] == true;
+		var canSlide = !(item["canSlide"] == false);
+		var turl = item["url"];
+		var tcss = item["css"];
+		var tdefault = item["default"] == true;
+		
 		var $a = $("<a></a>");
 		var $icon = $("<img/>");
 		$icon.attr("src", "../assets/img/CatalogIcons/" + title + ".png");
@@ -18,12 +23,15 @@ $(document).ready(function(){
 		var $title = $("<span></span>");
 		$title.html(title);
 		$a.append($title);
-		$a.attr("slide-toggle", title);
+		if(canSlide) $a.attr("slide-toggle", title);
+		if(turl != null) $a.attr("data-path", turl);
+		if(tcss != null) $a.attr("data-css", tcss);
+		if(turl != null & tdefault != null)  $a.attr("data-default", true);
 		sidebar.append($a);
 		
 		var $ul = $("<ul></ul>");
-		$ul.attr("slide-target", title);
-		if(open) $ul.attr("slide-open", "");
+		if(canSlide) $ul.attr("slide-target", title);
+		if(canSlide) if(open) $ul.attr("slide-open", "");
 		sidebar.append($ul);
 		
 		var children = item["children"];
@@ -101,6 +109,9 @@ function bindView() {
 		if($(this).attr("slide-open") == undefined) 
 			$(this).css("display", "none");
 	});
+	
+	// open default
+	$("[data-default]").click();
 }
 
 // bind json data to an object

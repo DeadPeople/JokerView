@@ -1,10 +1,13 @@
 var catalog = 
 [
 	{
-		"title": "Outline",
+		"title": "Overview",
 		"open": true,
+		"canSlide": false,
+		"url": "Overview/Overview.html",
+		"css": "Overview/Overview.css",
+		"default": true,
 		"children": [
-			{"title": "Overview", "css": "Outline/Overview.css"},
 			{"title": "Funnel", },
 			{"title": "Time Series", },
 			{"title": "Segmentation", },
@@ -16,7 +19,7 @@ var catalog =
 		"children": [
 			{"title": "Users", },
 			{"title": "Devices", "url": "Dashboard/Devices.html"},
-			{"title": "Countries"}
+			{"title": "Countries", "css": "Overview/Overview.css"}
 		]
 	},
 ];

@@ -1,11 +1,3 @@
-#topbar {
-	margin-top: 0;
-}
-
-#topbar #dateType {
-	float: right;
-}
-
 #SankeyDiagram {
 	height: 250px;
 	background: #DDD;

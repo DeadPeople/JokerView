@@ -19,27 +19,47 @@
 	<script src="../assets/highcharts/js/modules/data.js" type="text/javascript"></script>
 	<script src="../assets/highcharts/js/modules/exporting.js" type="text/javascript"></script>
 	
-	<!-- my -->
-	<link rel="stylesheet" href="../assets/css/reset.css" />
+	<!-- self jquery -->
 	<script type="text/javascript" src="../assets/jquery/my/slideView.js"></script>
 	<script type="text/javascript" src="../assets/jquery/my/dropDown.js"></script>
-	
-	<link rel="stylesheet" href="../assets/css/docs.css" />
+	<script type="text/javascript" src="../assets/js/conf.js"></script>
 	<script type="text/javascript" src="../assets/js/dashboard.js"></script>
 	
-	<script type="text/javascript" src="../assets/js/conf.js"></script>
+	<!-- my -->
+	<link rel="stylesheet" href="../assets/css/reset.css" />
+	<link rel="stylesheet" href="../assets/css/docs.css" />
+	<script type="text/javascript" src="../assets/js/main.js"></script>
+	
 </head>
 <body>
 	<div id="navbar" class="absoluteView">
-		<ul class="nav">
-			<li class="active">
-				<a href="./dashboard.html">Home</a>
-			</li>
-			<li>
-				<a href="./dashboard.html">About</a>
-			</li>
-		</ul>
+		<div id="ddl_company" class="btn-group">
+			<button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown"><span class="title">Site</span> 
+			<span class="caret"></span></button>
+			<ul class="dropdown-menu">
+				<li><a>MCUP</a></li>
+				<li><a>MUCP</a></li>
+			</ul>
+		</div>
+		
+		<div id="ddl_country" class="btn-group">
+			<button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown"><span class="title">Country</span> 
+			<span class="caret"></span></button>
+			<ul class="dropdown-menu">
+				<li><a>US</a></li>
+				<li><a>UE</a></li>
+				<li><a>CA</a></li>
+			</ul>
+		</div>
+		
+		<div id="commonNav"></div>
 		<div id="navInsert">asd</div>
+		
+		<div id="dateType" class="btn-group" data-toggle="buttons-radio">
+			<a class="btn btn-inverse">Day</a>
+			<a class="btn btn-inverse active">Week</a>
+			<a class="btn btn-inverse">Month</a>
+		</div>
 	</div>
 
 	<div id="sidebar" class="absoluteView">
