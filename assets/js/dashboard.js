@@ -17,6 +17,7 @@ $(document).ready(function(){
 		var tdefault = item["default"] == true;
 		
 		var $a = $("<a></a>");
+		$a.attr("id", "ca_" + title);
 		var $icon = $("<img/>");
 		$icon.attr("src", "../assets/img/CatalogIcons/" + title + ".png");
 		$a.append($icon);
@@ -30,6 +31,7 @@ $(document).ready(function(){
 		sidebar.append($a);
 		
 		var $ul = $("<ul></ul>");
+		$ul.attr("id", "cu_" + title);
 		if(canSlide) $ul.attr("slide-target", title);
 		if(canSlide) if(open) $ul.attr("slide-open", "");
 		sidebar.append($ul);

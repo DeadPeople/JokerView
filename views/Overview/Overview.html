@@ -1,11 +1,11 @@
 ﻿<div id="SankeyDiagram" class="component">
+	<a>Send MSG!</a>
 </div>
 
 <div class="component">
 	<h2>My Demo</h2>
 	<div id="myContent" class="content clearfix">
 		<div id="myChart">
-			
 		</div>
 		<div id="myTable">
 			<table class="table table-bordered table-condensed table-striped">
@@ -142,5 +142,10 @@ $(document).ready(function() {
 	});
 	
 	$("#myTable table").slideView(0);
+	
+	$("#SankeyDiagram a").click(function(){
+		myPara[REGION] = "CART";
+		enableNav();
+	});
 });
 </script>
