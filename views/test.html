@@ -31,7 +31,10 @@
 						]
 					},
 					data: {
-						nodes: [ { id: "1" }, { id: "2", label: "hahahahaha" , weight: 40, borderColor: "#ff0000" }, { id: "3" } ],
+						nodes: [ 
+							{ id: "1" }, 
+							{ id: "2", label: "hahahahaha" , borderColor: "#ff0000" }, 
+							{ id: "3" ,weight: 12} ],
 						edges: [ { id: "2to1", target: "1", source: "2", weight: 15 }, { id: "2to3", target: "3", source: "2" } ]
 					}
 				};
@@ -56,13 +59,13 @@
                         backgroundColor: "#ABCFD6"
                     },
                     nodes: {
-                        shape: "OCTAGON",
+                        /*shape: "OCTAGON",*/
                         borderWidth: 3,
                         borderColor: "#ffffff",
-                        size: {
-                            defaultValue: 25,
-                            continuousMapper: { attrName: "weight", minValue: 25, maxValue: 75 }
-                        },
+                        size: { defaultValue: 12, 
+                          continuousMapper: { attrName: "weight", 
+                                              minValue: 12, 
+                                              maxValue: 36 } },
                         color: {
                             discreteMapper: {
                                 attrName: "id",

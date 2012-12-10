@@ -46,6 +46,25 @@
                   </graph>\
                 </graphml>\
                 ';
+				
+				var networ_json = {
+					dataSchema: {
+						nodes: [ 
+							{ name: "weight", type: "number" }
+						],
+					},
+					data: {
+						nodes: [ 
+							{ id: "1" , weight: 2.0}, 
+							{ id: "2" , weight: 1.0}, 
+							{ id: "3"} 
+						],
+						edges: [ 
+							{ id: "2to1", target: "1", source: "2" }, 
+							{ id: "2to3", target: "3", source: "2" } 
+						]
+					}
+				}
                 
                 function rand_color() {
                     function rand_channel() {
@@ -118,7 +137,8 @@
  
                 var draw_options = {
                     // your data goes here
-                    network: xml,
+                    /*network: xml,*/
+					network: networ_json,
                     
                     // show edge labels too
                     edgeLabelsVisible: true,
