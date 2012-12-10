@@ -1,6 +1,7 @@
 ﻿<div id="SankeyDiagram" class="component">
-	<a>Send MSG!</a>
+	Cytoscape Web will replace the contents of this div with your graph.
 </div>
+<!-- <a>Send MSG!</a> -->
 
 <div class="component">
 	<h2>My Demo</h2>
@@ -100,6 +101,113 @@
 
 <script>
 $(document).ready(function() {
+	// display the SankeyDiagram
+	var div_id = "SankeyDiagram";
+	
+	var networ_json = {
+		dataSchema: {
+			nodes: [ { name: "label", type: "string" }, 
+					 { name: "weight", type: "number" },
+				],
+			edges: [ { name: "label", type: "string" },
+					 { name: "bar", type: "string" },
+					 { name: "weight", type: "number" }
+			]
+		},
+		data: {
+			nodes: [ 
+				{ id: "1", label: "Homepage" }, 
+				{ id: "2", label: "Search"}, 
+				{ id: "3", label: "Browse" },
+				{ id: "4", label: "Registration" },
+				{ id: "5", label: "View Item" },
+				{ id: "6", label: "My eBay" },
+				{ id: "7", label: "Cart" },
+				{ id: "8", label: "BBOAWA" },
+				{ id: "9", label: "Checkout" },
+				{ id: "10", label: "Payment" },
+				{ id: "11", label: "BBE" },
+			],
+			edges: [ 
+				{ id: "2to5", target: "5", source: "2", directed: true }, 
+				{ id: "3to5", target: "5", source: "3", directed: true },
+				{ id: "5to7", target: "7", source: "5", directed: true },
+				{ id: "5to8", target: "8", source: "5", directed: true },
+				{ id: "7to9", target: "9", source: "7", directed: true },
+				{ id: "9to10", target: "10", source: "9", directed: true },
+				{ id: "9to11", target: "11", source: "9", directed: true },
+			]
+		}
+	};
+	
+	var options = {
+		swfPath: "../assets/cytoscape_web/swf/CytoscapeWeb",
+		flashInstallerPath: "../assets/cytoscape_web/swf/playerProductInstall",
+	};
+	
+	var vis = new org.cytoscapeweb.Visualization(div_id, options);
+	
+	var visual_style = {
+		global: {
+			backgroundColor: "#ABCFD6"
+		},
+		nodes: {
+			/*shape: "OCTAGON",*/
+			borderWidth: 3,
+			borderColor: "#ffffff",
+			size: { defaultValue: 80, 
+			  continuousMapper: { attrName: "weight", 
+								  minValue: 80, 
+								  maxValue: 160 }
+			},
+			color: {
+				discreteMapper: {
+					attrName: "id",
+					entries: [
+						{ attrValue: 1, value: "#0B94B1" },
+						{ attrValue: 2, value: "#9A0B0B" },
+					]
+				},
+			},
+			labelHorizontalAnchor: "center"
+		},
+		edges: {
+			width: {
+				defaultValue: 3,
+				continuousMapper: { attrName: "weight", minValue: 1, maxValue: 10 }
+			},
+			color: "#0B94B1"
+		}
+	};
+	
+	var draw_options = {
+		// your data goes here
+		network: networ_json,
+		
+		// show edge labels too
+		edgeLabelsVisible: true,
+		
+		// let's try another layout
+		layout: {
+			name: "Preset" ,
+			options: {
+				points: [
+				{ id: "1", x:  10, y:  60 },
+				{ id: "2", x: -54, y:  32 },
+				{ id: "3", x: 120, y: -12 } ]
+			},
+		},
+		
+		// set the style at initialisation
+		visualStyle: visual_style,
+		
+		// hide pan zoom
+		panZoomControlVisible: true ,
+		
+	};
+	vis.draw(draw_options);
+	
+	// display the hightcharts
 	var chart;
 	
 	object = {
