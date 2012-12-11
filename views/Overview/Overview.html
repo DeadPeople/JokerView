@@ -107,7 +107,7 @@ $(document).ready(function() {
 	var networ_json = {
 		dataSchema: {
 			nodes: [ { name: "label", type: "string" }, 
-					 { name: "weight", type: "number" },
+					 { name: "weight", type: "number" }
 				],
 			edges: [ { name: "label", type: "string" },
 					 { name: "bar", type: "string" },
@@ -126,7 +126,7 @@ $(document).ready(function() {
 				{ id: "8", label: "BBOAWA" },
 				{ id: "9", label: "Checkout" },
 				{ id: "10", label: "Payment" },
-				{ id: "11", label: "BBE" },
+				{ id: "11", label: "BBE" }
 			],
 			edges: [ 
 				{ id: "2to5", target: "5", source: "2", directed: true }, 
@@ -135,14 +135,14 @@ $(document).ready(function() {
 				{ id: "5to8", target: "8", source: "5", directed: true },
 				{ id: "7to9", target: "9", source: "7", directed: true },
 				{ id: "9to10", target: "10", source: "9", directed: true },
-				{ id: "9to11", target: "11", source: "9", directed: true },
+				{ id: "9to11", target: "11", source: "9", directed: true }
 			]
 		}
 	};
 	
 	var options = {
 		swfPath: "../assets/cytoscape_web/swf/CytoscapeWeb",
-		flashInstallerPath: "../assets/cytoscape_web/swf/playerProductInstall",
+		flashInstallerPath: "../assets/cytoscape_web/swf/playerProductInstall"
 	};
 	
 	var vis = new org.cytoscapeweb.Visualization(div_id, options);
@@ -165,7 +165,7 @@ $(document).ready(function() {
 					attrName: "id",
 					entries: [
 						{ attrValue: 1, value: "#0B94B1" },
-						{ attrValue: 2, value: "#9A0B0B" },
+						{ attrValue: 2, value: "#9A0B0B" }
 					]
 				},
 			},
@@ -204,7 +204,7 @@ $(document).ready(function() {
 					{ id: "8", x: 300, y: 200 },
 					{ id: "9", x: 450, y: 100 },
 					{ id: "10", x: 600, y: 100 },
-					{ id: "11", x: 600, y: 200 },
+					{ id: "11", x: 600, y: 200 }
 				]
 			},
 		},
@@ -213,7 +213,7 @@ $(document).ready(function() {
 		visualStyle: visual_style,
 		
 		// hide pan zoom
-		panZoomControlVisible: true ,
+		panZoomControlVisible: true 
 		
 	};
 	vis.draw(draw_options);

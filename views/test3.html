@@ -14,11 +14,10 @@
 		<script type="text/javascript" src="../assets/cytoscape_web/js/min/cytoscapeweb.min.js"></script>
 		
 		<script type="text/javascript">
-			window.onload=function() {
-				// id of Cytoscape Web container div
-				var div_id = "cytoscapeweb";
-				
-				// you could also use other formats (e.g. GraphML) or grab the network data via AJAX
+			window.onload = function() {
+                // id of Cytoscape Web container div
+                var div_id = "SankeyDiagram";
+
 				var networ_json = {
 					dataSchema: {
 						nodes: [ { name: "label", type: "string" }, 
@@ -36,7 +35,7 @@
 							{ id: "3", label: "Browse" },
 							{ id: "4", label: "Registration" },
 							{ id: "5", label: "View Item" },
-							{ id: "6", label: "My eBay" },
+							{ id: "6", label: "My XXXX" },
 							{ id: "7", label: "Cart" },
 							{ id: "8", label: "BBOAWA" },
 							{ id: "9", label: "Checkout" },
@@ -54,72 +53,89 @@
 						]
 					}
 				}
-				
-				// initialization options
-				var options = {
-					// where you have the Cytoscape Web SWF
+                
+                // visual style we will use
+                var visual_style = {
+					global: {
+						backgroundColor: "#ABCFD6"
+					},
+					nodes: {
+						/*shape: "OCTAGON",*/
+						borderWidth: 3,
+						borderColor: "#ffffff",
+						size: { defaultValue: 80, 
+						  continuousMapper: { attrName: "weight", 
+											  minValue: 80, 
+											  maxValue: 160 }
+						},
+						color: {
+							discreteMapper: {
+								attrName: "id",
+								entries: [
+									{ attrValue: 1, value: "#0B94B1" },
+									{ attrValue: 2, value: "#9A0B0B" }
+								]
+							},
+						},
+						labelHorizontalAnchor: "center"
+					},
+					edges: {
+						width: {
+							defaultValue: 3,
+							continuousMapper: { attrName: "weight", minValue: 1, maxValue: 10 }
+						},
+						color: "#0B94B1"
+					}
+				};
+                
+                // initialization options
+                var options = {
 					swfPath: "../assets/cytoscape_web/swf/CytoscapeWeb",
-					// where you have the Flash installer SWF
 					flashInstallerPath: "../assets/cytoscape_web/swf/playerProductInstall"
 				};
 				
-				// init and draw
 				var vis = new org.cytoscapeweb.Visualization(div_id, options);
-				
-				
-				
-				
-				// visual style we will use
-                var visual_style = {
-                    global: {
-                        backgroundColor: "#ABCFD6"
-                    },
-                    nodes: {
-                        /*shape: "OCTAGON",*/
-                        borderWidth: 3,
-                        borderColor: "#ffffff",
-                        size: { defaultValue: 80, 
-                          continuousMapper: { attrName: "weight", 
-                                              minValue: 80, 
-                                              maxValue: 160 } },
-                        color: {
-                            discreteMapper: {
-                                attrName: "id",
-                                entries: [
-                                    { attrValue: 1, value: "#0B94B1" },
-                                    { attrValue: 2, value: "#9A0B0B" }
-                                ]
-                            }
-                        },
-                        labelHorizontalAnchor: "center"
-                    },
-                    edges: {
-                        width: {
-							defaultValue: 5,
-                            continuousMapper: { attrName: "weight", minValue: 5, maxValue: 10 }
-						},
-                        color: "#0B94B1"
-                    }
-                };
-				
-				var draw_options = {
-                    // your data goes here
-                    network: networ_json,
-                    
-                    // show edge labels too
-                    edgeLabelsVisible: true,
-                    
-                    // let's try another layout
-                    layout: "Circle",
-                    
-                    // set the style at initialisation
-                    visualStyle: visual_style
-                    
-                    // hide pan zoom
-                    /*panZoomControlVisible: false */
-                };
-				vis.draw(draw_options);
-			};
+                
+ 
+                var draw_options = {
+		// your data goes here
+		network: networ_json,
+		
+		// show edge labels too
+		edgeLabelsVisible: true,
+		
+		// let's try another layout
+		layout: {
+			name: "Preset" ,
+			options: {
+				points: [
+					{ id: "1", x: -350, y: 150 },
+					{ id: "4", x: -250, y: 150 },
+					{ id: "6", x: -150, y: 150 },
+					
+					{ id: "2", x: 0, y: 100 },
+					{ id: "3", x: 0, y: 200 },
+					
+					{ id: "5", x: 150, y: 150 },
+					{ id: "7", x: 300, y: 100 },
+					{ id: "8", x: 300, y: 200 },
+					{ id: "9", x: 450, y: 100 },
+					{ id: "10", x: 600, y: 100 },
+					{ id: "11", x: 600, y: 200 }
+				]
+			},
+		},
+		
+		// set the style at initialisation
+		visualStyle: visual_style,
+		
+		// hide pan zoom
+		panZoomControlVisible: true 
+		
+	};
+                
+                vis.draw(draw_options);
+            };
 		</script>
 		
 		<style>
@@ -130,7 +146,7 @@
 	</head>
 	
 	<body>
-		<div id="cytoscapeweb">
+		<div id="SankeyDiagram">
 			Cytoscape Web will replace the contents of this div with your graph.
 		</div>
 	</body>
