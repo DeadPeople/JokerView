@@ -143,12 +143,12 @@ $(document).ready(function() {
 	// visual style we will use
 	var visual_style = {
 		global: {
-			backgroundColor: "#ABCFD6"
+			backgroundColor: "#FFFFFF"
 		},
 		nodes: {
-			/*shape: "OCTAGON",*/
+			shape: "ROUNDRECT",
 			borderWidth: 3,
-			borderColor: "#ffffff",
+			borderColor: "#BBBBBB",
 			size: { defaultValue: 80, 
 			  continuousMapper: { attrName: "weight", 
 								  minValue: 80, 
@@ -158,8 +158,17 @@ $(document).ready(function() {
 				discreteMapper: {
 					attrName: "id",
 					entries: [
-						{ attrValue: 1, value: "#0B94B1" },
-						{ attrValue: 2, value: "#9A0B0B" }
+						/*{ attrValue: 1, value: "#ED8787" },
+						{ attrValue: 2, value: "#FFB340" },
+						{ attrValue: 3, value: "#6375EF" },
+						{ attrValue: 4, value: "#FFFF4F" },
+						{ attrValue: 5, value: "#89C4F3" },
+						{ attrValue: 6, value: "#88FF88" },
+						{ attrValue: 7, value: "#FFB7B7" },
+						{ attrValue: 8, value: "#88FF88" },
+						{ attrValue: 9, value: "#88FF88" },
+						{ attrValue: 10, value: "#6375EF" },
+						{ attrValue: 11, value: "#ED8787" }*/
 					]
 				},
 			},
@@ -220,6 +229,26 @@ $(document).ready(function() {
 		
 	};
 	
+	 vis.ready(function() {
+		// add a listener for when nodes and edges are clicked
+		vis.addListener("click", "nodes", function(event) {
+			handle_click(event);
+		});
+		
+		function handle_click(event) {
+			 var target = event.target;
+			 
+			 /*for (var i in target.data) {
+				var variable_name = i;
+				var variable_value = target.data[i];
+				console.log(variable_name + " = " + variable_value );
+			 }*/
+			 
+			myPara[REGION] = target.data["label"];
+			enableNav();
+		}
+	});
+	
 	vis.draw(draw_options);
 	
 	// display the hightcharts
@@ -266,9 +295,9 @@ $(document).ready(function() {
 	
 	$("#myTable table").slideView(0);
 	
-	$("#SankeyDiagram a").click(function(){
+	/*$("#SankeyDiagram a").click(function(){
 		myPara[REGION] = "CART";
 		enableNav();
-	});
+	});*/
 });
 </script>

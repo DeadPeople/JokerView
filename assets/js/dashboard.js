@@ -235,8 +235,13 @@ function addScriptFile(name, path, callback) {
 function addCSSFile(name, path) {
 	if(cssLists[name] == null || cssLists[name] == undefined) {
 		cssLists[name] = path + "?rnd=" + Math.random();
-		var css = '<link rel="stylesheet" href="' + cssLists[name] + '" />';
-		$("head").append(css);
+		
+		if($.browser.msie && jQuery.browser.version <= 8){
+			document.createStyleSheet(cssLists[name]);
+		} else {
+			var css = '<link rel="stylesheet" href="' + cssLists[name] + '" />';
+			$("head").append(css);
+		}
 	}
 }
 
@@ -244,7 +249,7 @@ function addCSSFile(name, path) {
 function rmCSSFile(name) {
 	var cssPath = cssLists[name];
 	if(cssPath != undefined) {
-		$("head link").each(function(){
+		$("link").each(function(){
 			if($(this).attr("href") == cssPath) $(this).remove();
 		});
 		cssLists[name] = undefined;

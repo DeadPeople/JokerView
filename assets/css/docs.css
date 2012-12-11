@@ -67,6 +67,39 @@ body {
 	display: inline;
 }
 
+#navbar .btn-group button {
+	width: 100px;
+}
+
+#navbar .btn-group button span.caret {
+	float: right;
+}
+
+#navbar #ddl_region {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left: -100px;
+}
+
+#navbar #ddl_region button {
+	font-size: 26px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+}
+
+#navbar #ddl_region button,
+#navbar #ddl_region  ul.dropdown-menu {
+	width: 200px;
+}
+
+#navbar #ddl_region  ul.dropdown-menu li.divider {
+	height: 0;
+	border-bottom: 1px solid gray;
+}
+
 #navbar #dateType {
 	float: right;
 }
@@ -252,3 +285,7 @@ body {
 .dropdown-menu a {
 	cursor: pointer;
 }
+
+
+
+/************* content detail *************/
