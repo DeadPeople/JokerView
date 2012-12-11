@@ -101,9 +101,9 @@
 
 <script>
 $(document).ready(function() {
-	// display the SankeyDiagram
+	// id of Cytoscape Web container div
 	var div_id = "SankeyDiagram";
-	
+
 	var networ_json = {
 		dataSchema: {
 			nodes: [ { name: "label", type: "string" }, 
@@ -138,15 +138,9 @@ $(document).ready(function() {
 				{ id: "9to11", target: "11", source: "9", directed: true }
 			]
 		}
-	};
+	}
 	
-	var options = {
-		swfPath: "../assets/cytoscape_web/swf/CytoscapeWeb",
-		flashInstallerPath: "../assets/cytoscape_web/swf/playerProductInstall"
-	};
-	
-	var vis = new org.cytoscapeweb.Visualization(div_id, options);
-	
+	// visual style we will use
 	var visual_style = {
 		global: {
 			backgroundColor: "#ABCFD6"
@@ -180,6 +174,15 @@ $(document).ready(function() {
 		}
 	};
 	
+	// initialization options
+	var options = {
+		swfPath: "../assets/cytoscape_web/swf/CytoscapeWeb",
+		flashInstallerPath: "../assets/cytoscape_web/swf/playerProductInstall"
+	};
+	
+	var vis = new org.cytoscapeweb.Visualization(div_id, options);
+	
+
 	var draw_options = {
 		// your data goes here
 		network: networ_json,
@@ -216,6 +219,7 @@ $(document).ready(function() {
 		panZoomControlVisible: true 
 		
 	};
+	
 	vis.draw(draw_options);
 	
 	// display the hightcharts

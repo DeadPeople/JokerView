@@ -98,41 +98,41 @@
                 
  
                 var draw_options = {
-		// your data goes here
-		network: networ_json,
-		
-		// show edge labels too
-		edgeLabelsVisible: true,
-		
-		// let's try another layout
-		layout: {
-			name: "Preset" ,
-			options: {
-				points: [
-					{ id: "1", x: -350, y: 150 },
-					{ id: "4", x: -250, y: 150 },
-					{ id: "6", x: -150, y: 150 },
+					// your data goes here
+					network: networ_json,
 					
-					{ id: "2", x: 0, y: 100 },
-					{ id: "3", x: 0, y: 200 },
+					// show edge labels too
+					edgeLabelsVisible: true,
 					
-					{ id: "5", x: 150, y: 150 },
-					{ id: "7", x: 300, y: 100 },
-					{ id: "8", x: 300, y: 200 },
-					{ id: "9", x: 450, y: 100 },
-					{ id: "10", x: 600, y: 100 },
-					{ id: "11", x: 600, y: 200 }
-				]
-			},
-		},
-		
-		// set the style at initialisation
-		visualStyle: visual_style,
-		
-		// hide pan zoom
-		panZoomControlVisible: true 
-		
-	};
+					// let's try another layout
+					layout: {
+						name: "Preset" ,
+						options: {
+							points: [
+								{ id: "1", x: -350, y: 150 },
+								{ id: "4", x: -250, y: 150 },
+								{ id: "6", x: -150, y: 150 },
+								
+								{ id: "2", x: 0, y: 100 },
+								{ id: "3", x: 0, y: 200 },
+								
+								{ id: "5", x: 150, y: 150 },
+								{ id: "7", x: 300, y: 100 },
+								{ id: "8", x: 300, y: 200 },
+								{ id: "9", x: 450, y: 100 },
+								{ id: "10", x: 600, y: 100 },
+								{ id: "11", x: 600, y: 200 }
+							]
+						},
+					},
+					
+					// set the style at initialisation
+					visualStyle: visual_style,
+					
+					// hide pan zoom
+					panZoomControlVisible: true 
+					
+				};
                 
                 vis.draw(draw_options);
             };
