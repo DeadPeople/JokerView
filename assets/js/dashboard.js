@@ -1,6 +1,10 @@
 var scriptLists = new Object();
 var cssLists = new Object();
 var cur_css = "";
+var cur_script = "";
+
+// init function
+doScript = function(){}
 
 // Silde Binder
 $(document).ready(function(){
@@ -14,6 +18,7 @@ $(document).ready(function(){
 		var canSlide = !(item["canSlide"] == false);
 		var turl = item["url"];
 		var tcss = item["css"];
+		var tscript = item["script"];
 		var tdefault = item["default"] == true;
 		
 		var $a = $("<a></a>");
@@ -27,6 +32,7 @@ $(document).ready(function(){
 		if(canSlide) $a.attr("slide-toggle", title);
 		if(turl != null) $a.attr("data-path", turl);
 		if(tcss != null) $a.attr("data-css", tcss);
+		if(tscript != null) $a.attr("data-script", tscript);
 		if(turl != null & tdefault != null)  $a.attr("data-default", true);
 		sidebar.append($a);
 		
@@ -43,6 +49,7 @@ $(document).ready(function(){
 			var subtitle = item["title"];
 			var url = item["url"];
 			var css = item["css"];
+			var script = item["script"];
 			var $li = $("<li></li>");
 			var $icon = $("<img/>");
 			$icon.attr("src", "../assets/img/CatalogIcons/" + title + "/" + subtitle + ".png");
@@ -59,6 +66,11 @@ $(document).ready(function(){
 				$li.attr("data-css", title + "/" + subtitle + ".css");
 			} else {
 				$li.attr("data-css", css);
+			}
+			if(script == undefined) {
+				$li.attr("data-script", title + "/" + subtitle + ".script");
+			} else {
+				$li.attr("data-script", script);
 			}
 			$ul.append($li);
 		}
@@ -79,15 +91,25 @@ function bindView() {
 		
 		// close current view
 		rmCSSFile(cur_css);
+		rmScriptFile(cur_script);
 		try {
 			closeView();
 		} catch(err) {}
+		
+		var done_script = false;
+		var done_content = false;
 		
 		// display the target view
 		$("#content").empty();
 		
 		cur_css = $(this).attr("data-css");
-		addCSSFile($(this).attr("data-css"), "../assets/css/"+$(this).attr("data-css"));
+		addCSSFile(cur_css, "../assets/css/" + cur_css);
+		
+		cur_script = $(this).attr("data-script");
+		addScriptFile(cur_script, "../assets/js/" + cur_script, function() {
+			done_script = true;
+			delayStart();
+		});
 		
 		$.get($(this).attr("data-path"),{rnd: Math.random()}, function(data){
 			$("#content").html(data);
@@ -95,7 +117,18 @@ function bindView() {
 			// move the operation bar into navgation bar
 			$("#navInsert").empty();
 			$("#operationBar").appendTo($("#navInsert"));
+			
+			done_content = true;
+			delayStart();
 		});
+		
+		function delayStart() {
+			if(!done_content || !done_script) return;
+			try {
+				doScript();
+			} catch(err) {}
+			doScript = function(){}
+		}
 	});
 	
 	// bind slide target
@@ -224,10 +257,23 @@ function addScriptFiles(scriptFiles, callback) {
 // add a script file in the document(only can add once)
 function addScriptFile(name, path, callback) {
 	if(scriptLists[name] == null || scriptLists[name] == undefined) {
-		scriptLists[name] = path;
-		$.getScript(path, callback);
+		scriptLists[name] = path + "?rnd=" + Math.random();
+		$.getScript(scriptLists[name], callback);
 	} else {
 		if(callback != undefined) callback();
+	}
+}
+
+// rm a script file in the document
+function rmScriptFile(name) {
+	var scriptPath = scriptLists[name];
+	if(scriptPath != undefined) {
+		$("script").each(function(){
+			if($(this).attr("src") == scriptPath) {
+				$(this).remove();
+			}
+		});
+		scriptLists[name] = undefined;
 	}
 }
 
