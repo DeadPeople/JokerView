@@ -258,9 +258,36 @@ function addScriptFiles(scriptFiles, callback) {
 function addScriptFile(name, path, callback) {
 	if(scriptLists[name] == null || scriptLists[name] == undefined) {
 		scriptLists[name] = path + "?rnd=" + Math.random();
-		$.getScript(scriptLists[name], function(){
+		/*$.getScript(scriptLists[name], function(){
 			callback();
-		});
+		});*/
+		var head = document.head || document.getElementsByTagName( "head" )[0] || document.documentElement;
+		
+		var script = document.createElement( "script" );
+		script.async = "async";
+		script.charset = "UTF-8";
+		script.src = scriptLists[name];
+		
+		// Attach handlers for all browsers
+		script.onload = script.onreadystatechange = function( _, isAbort ) {
+			if ( isAbort || !script.readyState || /loaded|complete/.test( script.readyState ) ) {
+				// Handle memory leak in IE
+				script.onload = script.onreadystatechange = null;
+				// Remove the script
+				if ( head && script.parentNode ) {
+					head.removeChild( script );
+				}
+				// Dereference the script
+				script = undefined;
+				// Callback if not abort
+				if ( !isAbort ) {
+					callback( 200, "success" );
+				}
+			}
+		};
+		// Use insertBefore instead of appendChild  to circumvent an IE6 bug.
+		// This arises when a base node is used (#2709 and #4378).
+		head.insertBefore( script, head.firstChild );
 	} else {
 		if(callback != undefined) callback();
 	}
