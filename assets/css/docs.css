@@ -72,7 +72,9 @@ body {
 }
 
 #navbar .btn-group button span.caret {
-	float: right;
+	/*float: right;*/
+	position: absolute;
+	right: 10px;
 }
 
 #navbar #ddl_region {

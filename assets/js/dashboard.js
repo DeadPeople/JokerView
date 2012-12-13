@@ -258,7 +258,9 @@ function addScriptFiles(scriptFiles, callback) {
 function addScriptFile(name, path, callback) {
 	if(scriptLists[name] == null || scriptLists[name] == undefined) {
 		scriptLists[name] = path + "?rnd=" + Math.random();
-		$.getScript(scriptLists[name], callback);
+		$.getScript(scriptLists[name], function(){
+			callback();
+		});
 	} else {
 		if(callback != undefined) callback();
 	}
