@@ -18,7 +18,7 @@ var regions = [
 
 $(document).ready(function() {
 	// hiden the nav at the first time
-	$("#cu_Overview").hide();
+	//$("#cu_Overview").hide();
 	
 	// fill the nav region
 	var region_list = $("#ddl_region ul.dropdown-menu");
