@@ -39,51 +39,39 @@
 </head>
 <body>
 	<div id="navbar" class="absoluteView">
-		<div id="ddl_company" class="btn-group">
-			<button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown"><span class="title">Site</span> 
-			<span class="caret"></span></button>
-			<ul class="dropdown-menu">
-				<li><a>MCUP</a></li>
-				<li><a>MUCP</a></li>
-			</ul>
+		<div id="tabPage" class="btn-group" data-toggle="buttons-radio">
+			<a class="btn btn-inverse active">Funnel</a>
+			<a class="btn btn-inverse">Time Series</a>
+			<a class="btn btn-inverse">Segmentation</a>
+			<a class="btn btn-inverse">Cube</a>
 		</div>
 		
-		<div id="ddl_country" class="btn-group">
-			<button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown"><span class="title">Country</span> 
-			<span class="caret"></span></button>
-			<ul class="dropdown-menu">
-				<li><a>US</a></li>
-				<li><a>UE</a></li>
-				<li><a>CA</a></li>
-			</ul>
-		</div>
-		
-		<div id="commonNav"></div>
-		<div id="navInsert">asd</div>
-		
-		<div id="ddl_region" class="btn-group">
-			<button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown"><span class="title">Overview</span> 
-			<span class="caret"></span></button>
-			<ul class="dropdown-menu">
-				<li><a>Overview</a></li> 
-				<li><a>Homepage</a></li> 
-				<li><a>Search</a></li>
-				<li><a>Browse</a></li>
-				<li><a>Registration</a></li>
-				<li><a>View Item</a></li>
-				<li><a>My XXXX</a></li>
-				<li><a>Cart</a></li>
-				<li><a>BBOAWA</a></li>
-				<li><a>Checkout</a></li>
-				<li><a>Payment</a></li>
-				<li><a>BBE</a></li>
-			</ul>
-		</div>
-		
-		<div id="dateType" class="btn-group" data-toggle="buttons-radio">
-			<a class="btn btn-inverse">Day</a>
-			<a class="btn btn-inverse active">Week</a>
-			<a class="btn btn-inverse">Month</a>
+		<div id="commonNav">
+			<div id="navInsert">asd</div>
+			<div id="ddl_company" class="btn-group">
+				<button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown"><span class="title">Site</span> 
+				<span class="caret"></span></button>
+				<ul class="dropdown-menu">
+					<li><a>MCUP</a></li>
+					<li><a>MUCP</a></li>
+				</ul>
+			</div>
+			
+			<div id="ddl_country" class="btn-group">
+				<button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown"><span class="title">Country</span> 
+				<span class="caret"></span></button>
+				<ul class="dropdown-menu">
+					<li><a>US</a></li>
+					<li><a>UE</a></li>
+					<li><a>CA</a></li>
+				</ul>
+			</div>
+			
+			<div id="dateType" class="btn-group" data-toggle="buttons-radio">
+				<a class="btn btn-inverse">Day</a>
+				<a class="btn btn-inverse active">Week</a>
+				<a class="btn btn-inverse">Month</a>
+			</div>
 		</div>
 	</div>
 

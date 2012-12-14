@@ -22,13 +22,11 @@ var catalog =
 		"css": "Overview/Overview.css",
 		"script": "Overview/Overview.js",
 		"default": true,
+		"tab": true,
+		"taburl": "Overview/Overview.html",
+		"tabcss": "Overview/Overview.css",
+		"tabscript": "Overview/Overview.js",
 		"children": regions,
-		/*[
-			{"title": "Funnel", },
-			{"title": "Time Series", },
-			{"title": "Segmentation", },
-			{"title": "Cube", },
-		]*/
 	},
 	{
 		"title": "Dashboard", 

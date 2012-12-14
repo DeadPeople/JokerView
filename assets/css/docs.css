@@ -62,6 +62,10 @@ body {
 	background: #333;
 }
 
+#navbar #commonNav {
+	float: right;
+}
+
 #navbar #commonNav,
 #navbar #navInsert {
 	display: inline;
@@ -72,38 +76,8 @@ body {
 }
 
 #navbar .btn-group button span.caret {
-	/*float: right;*/
 	position: absolute;
 	right: 10px;
-}
-
-#navbar #ddl_region {
-	position: absolute;
-	top: 0;
-	left: 50%;
-	margin-left: -100px;
-}
-
-#navbar #ddl_region button {
-	font-size: 26px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	border-top-left-radius: 0px;
-	border-top-right-radius: 0px;
-}
-
-#navbar #ddl_region button,
-#navbar #ddl_region  ul.dropdown-menu {
-	width: 200px;
-}
-
-#navbar #ddl_region  ul.dropdown-menu li.divider {
-	height: 0;
-	border-bottom: 1px solid gray;
-}
-
-#navbar #dateType {
-	float: right;
 }
 
 .blockList a {
