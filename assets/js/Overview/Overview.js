@@ -142,8 +142,10 @@ function doScript() {
 				console.log(variable_name + " = " + variable_value );
 			 }*/
 			 
-			myPara[REGION] = target.data["label"];
-			enableNav();
+			/*myPara[REGION] = target.data["label"];
+			enableNav();*/
+			
+			$("#cu_Overview li:contains('"+target.data["label"]+"')").click();
 		}
 	});
 	

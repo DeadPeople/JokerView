@@ -23,9 +23,9 @@ var catalog =
 		"script": "Overview/Overview.js",
 		"default": true,
 		"tab": true,
-		"taburl": "Overview/Overview.html",
-		"tabcss": "Overview/Overview.css",
-		"tabscript": "Overview/Overview.js",
+		"taburl": "Overview/123.html",
+		"tabcss": "Overview/123.css",
+		"tabscript": "Overview/123.js",
 		"children": regions,
 	},
 	{

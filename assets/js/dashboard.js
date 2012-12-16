@@ -1,10 +1,12 @@
 var scriptLists = new Object();
 var cssLists = new Object();
+var cur_url = "";
 var cur_css = "";
 var cur_script = "";
 
 // init function
 doScript = function(){}
+closeView = function(){}
 
 // Silde Binder
 $(document).ready(function(){
@@ -19,6 +21,10 @@ $(document).ready(function(){
 		var turl = item["url"];
 		var tcss = item["css"];
 		var tscript = item["script"];
+		var tab = item["tab"] == true;
+		var taburl = item["taburl"];
+		var tabcss = item["tabcss"];
+		var tabscript = item["tabscript"];
 		var tdefault = item["default"] == true;
 		
 		var $a = $("<a></a>");
@@ -29,17 +35,23 @@ $(document).ready(function(){
 		var $title = $("<span></span>");
 		$title.html(title);
 		$a.append($title);
-		if(canSlide) $a.attr("slide-toggle", title);
+		$a.attr("slide-toggle", title);
+		if(!canSlide) $a.attr("slide-no", "no");
 		if(turl != null) $a.attr("data-path", turl);
 		if(tcss != null) $a.attr("data-css", tcss);
 		if(tscript != null) $a.attr("data-script", tscript);
+		if(tab) {
+			if(taburl != undefined) $a.attr("data-tab-path", taburl);
+			if(tabcss != undefined) $a.attr("data-tab-css", tabcss);
+			if(tabscript != undefined) $a.attr("data-tab-script", tabscript);
+		}
 		if(turl != null & tdefault != null)  $a.attr("data-default", true);
 		sidebar.append($a);
 		
 		var $ul = $("<ul></ul>");
 		$ul.attr("id", "cu_" + title);
-		if(canSlide) $ul.attr("slide-target", title);
-		if(canSlide) if(open) $ul.attr("slide-open", "");
+		$ul.attr("slide-target", title);
+		if(open) $ul.attr("slide-open", "");
 		sidebar.append($ul);
 		
 		var children = item["children"];
@@ -57,8 +69,10 @@ $(document).ready(function(){
 			var $subtitle = $("<span></span>");
 			$subtitle.html(subtitle);
 			$li.append($subtitle);
+			
 			if(url == undefined) {
 				$li.attr("data-path", title + "/" + subtitle + ".html");
+				$li.attr("data-auto-gen", "");
 			} else {
 				$li.attr("data-path", url);
 			}
@@ -68,10 +82,11 @@ $(document).ready(function(){
 				$li.attr("data-css", css);
 			}
 			if(script == undefined) {
-				$li.attr("data-script", title + "/" + subtitle + ".script");
+				$li.attr("data-script", title + "/" + subtitle + ".js");
 			} else {
 				$li.attr("data-script", script);
 			}
+			
 			$ul.append($li);
 		}
 	}
@@ -95,6 +110,7 @@ function bindView() {
 		try {
 			closeView();
 		} catch(err) {}
+		closeView = function(){}
 		
 		var done_script = false;
 		var done_content = false;
@@ -102,16 +118,26 @@ function bindView() {
 		// display the target view
 		$("#content").empty();
 		
-		cur_css = $(this).attr("data-css");
-		addCSSFile(cur_css, "../assets/css/" + cur_css);
+		// find the tab exist or not
+		var myUl = $(this).parent();
+		if(myUl.attr("slide-target") != undefined && $(this).attr("data-auto-gen") != undefined) {
+			var myToggle = $("[slide-toggle='" + myUl.attr("slide-target") + "']");
+			cur_url = myToggle.attr("data-tab-path");
+			cur_css = myToggle.attr("data-tab-css");
+			cur_script = myToggle.attr("data-tab-script");
+			console.log("yes!");
+		} else {
+			cur_url = $(this).attr("data-path");
+			cur_css = $(this).attr("data-css");
+			cur_script = $(this).attr("data-script");
+		}
 		
-		cur_script = $(this).attr("data-script");
+		addCSSFile(cur_css, "../assets/css/" + cur_css);
 		addScriptFile(cur_script, "../assets/js/" + cur_script, function() {
 			done_script = true;
 			delayStart();
 		});
-		
-		$.get($(this).attr("data-path"),{rnd: Math.random()}, function(data){
+		$.get(cur_url, {rnd: Math.random()}, function(data){
 			$("#content").html(data);
 			
 			// move the operation bar into navgation bar
@@ -135,14 +161,17 @@ function bindView() {
 	$("[slide-toggle]").each(function(){
 		if($(this).data("slide") == "slide") return;
 		$(this).data("slide", "slide");
-		$(this).click(function(){
-			var data = $(this).attr("slide-toggle");
-			$("[slide-target=" + data + "]").slideToggle("fast");
-		});
+		if($(this).attr("slide-no") == undefined) {
+			$(this).click(function(){
+				var data = $(this).attr("slide-toggle");
+				$("[slide-target=" + data + "]").slideToggle("fast");
+			});
+		}
 	});
 	$("[slide-target]").each(function(){
-		if($(this).attr("slide-open") == undefined) 
+		if($(this).attr("slide-open") == undefined) {
 			$(this).css("display", "none");
+		}
 	});
 	
 	// open default
