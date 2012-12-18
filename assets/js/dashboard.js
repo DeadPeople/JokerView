@@ -125,7 +125,6 @@ function bindView() {
 			cur_url = myToggle.attr("data-tab-path");
 			cur_css = myToggle.attr("data-tab-css");
 			cur_script = myToggle.attr("data-tab-script");
-			console.log("yes!");
 		} else {
 			cur_url = $(this).attr("data-path");
 			cur_css = $(this).attr("data-css");

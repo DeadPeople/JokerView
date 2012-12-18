@@ -1,0 +1,9 @@
+#views div.viewContent {
+	height: 100px;
+	background: red;
+	display: none;
+}
+
+#views div.viewContent.active {
+	display: block;
+}
