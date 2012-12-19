@@ -135,15 +135,6 @@ function doScript() {
 		
 		function handle_click(event) {
 			 var target = event.target;
-			 
-			 /*for (var i in target.data) {
-				var variable_name = i;
-				var variable_value = target.data[i];
-				console.log(variable_name + " = " + variable_value );
-			 }*/
-			 
-			/*myPara[REGION] = target.data["label"];
-			enableNav();*/
 			
 			$("#cu_Overview li:contains('"+target.data["label"]+"')").click();
 		}

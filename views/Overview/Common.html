@@ -1,6 +1,141 @@
-﻿<div id="views">
-	<div id="" class="viewContent" data-type="funnel">
-		1
+﻿<div id="operationBar">
+	<div id="tabPage" class="btn-group" data-toggle="buttons-radio">
+		<a class="btn btn-inverse active" data-type="funnel">Funnel</a>
+		<a class="btn btn-inverse" data-type="timeseries">Time Series</a>
+		<a class="btn btn-inverse" data-type="segmentation">Segmentation</a>
+		<a class="btn btn-inverse" data-type="cube">Cube</a>
+	</div>
+</div>
+
+<div id="views">
+	<div id="FunnelView" class="viewContent" data-type="funnel">
+		<div id="cart" class="component">
+			<div class="content clearfix">
+				<div id="atc" class="view">
+					<div id="atc_chart" class="chart"></div>
+					<h3>ATC</h3>
+					<p>Second line of text</p>
+				</div>
+				<div id="ryc" class="view">
+					<div id="ryc_chart" class="chart"></div>
+					<h3>RYC</h3>
+					<p>Second line of text</p>
+				</div>
+				<div id="cyc" class="view">
+					<div id="cyc_chart" class="chart"></div>
+					<h3>CYC</h3>
+					<p>Second line of text</p>
+				</div>
+				<div id="cyp" class="view">
+					<div id="cyp_chart" class="chart"></div>
+					<h3>CYP</h3>
+					<p>Second line of text</p>
+				</div>
+				<div class="view end"></div>
+			</div>
+		</div>
+
+		<div id="radiosView" class="component">
+			<div class="content clearfix">
+				<div id="radios">
+					<label class="radio"><input type="radio" name="optionsRadios" checked>Test1</label>
+					<label class="radio"><input type="radio" name="optionsRadios" >Test2</label>
+					<label class="radio"><input type="radio" name="optionsRadios" >Test3</label>
+					<label class="radio"><input type="radio" name="optionsRadios" >Test4</label>
+					<label class="radio"><input type="radio" name="optionsRadios" >Test5</label>
+					<label class="radio"><input type="radio" name="optionsRadios" >Test6</label>
+					<label class="radio"><input type="radio" name="optionsRadios" >Test7</label>
+				</div>
+				<div id="tables">
+					<table class="table table-bordered table-condensed table-striped">
+						<thead>
+							<tr>
+								<th width="25"></th>
+								<th></th>
+								<th>Actual</th>
+								<th>WOW</th>
+								<th>YOY</th>
+								<th width="25"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><i class="icon-plus-sign"></i></td>
+								<td>RUV</td>
+								<td>1.2%</td>
+								<td>2.3%</td>
+								<td>2.56%</td>
+								<td><i class="icon-align-justify"></i></td>
+							</tr>
+							<tr>
+								<td><i class="icon-plus-sign"></i></td>
+								<td>ASE</td>
+								<td>1.2%</td>
+								<td>2.3%</td>
+								<td>2.56%</td>
+								<td><i class="icon-align-justify"></i></td>
+							</tr>
+							<tr slide-toggle="DEA">
+								<td><i class="icon-plus-sign"></i></td>
+								<td>CLICK ME!</td>
+								<td>1.2%</td>
+								<td>2.3%</td>
+								<td>2.56%</td>
+								<td><i class="icon-align-justify"></i></td>
+							</tr>
+							<tr slide-target="DEA">
+								<td></td>
+								<td>-</td>
+								<td>1.2%</td>
+								<td>2.3%</td>
+								<td>2.56%</td>
+								<td></td>
+							</tr>
+							<tr slide-target="DEA">
+								<td></td>
+								<td>-</td>
+								<td>1.2%</td>
+								<td>2.3%</td>
+								<td>2.56%</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><i class="icon-plus-sign"></i></td>
+								<td>EAE</td>
+								<td>1.2%</td>
+								<td>2.3%</td>
+								<td>2.56%</td>
+								<td><i class="icon-align-justify"></i></td>
+							</tr>
+							<tr>
+								<td><i class="icon-plus-sign"></i></td>
+								<td>EAE</td>
+								<td>1.2%</td>
+								<td>2.3%</td>
+								<td>2.56%</td>
+								<td><i class="icon-align-justify"></i></td>
+							</tr>
+							<tr>
+								<td><i class="icon-plus-sign"></i></td>
+								<td>EAE</td>
+								<td>1.2%</td>
+								<td>2.3%</td>
+								<td>2.56%</td>
+								<td><i class="icon-align-justify"></i></td>
+							</tr>
+							<tr>
+								<td><i class="icon-plus-sign"></i></td>
+								<td>EAE</td>
+								<td>1.2%</td>
+								<td>2.3%</td>
+								<td>2.56%</td>
+								<td><i class="icon-align-justify"></i></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div id="" class="viewContent" data-type="timeseries">
 		2

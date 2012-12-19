@@ -67,7 +67,8 @@ body {
 }
 
 #navbar #commonNav,
-#navbar #navInsert {
+#navbar #navInsert,
+#navbar #navInsert #operationBar {
 	display: inline;
 }
 
