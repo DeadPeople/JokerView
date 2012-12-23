@@ -7,6 +7,17 @@
 	display: block;
 }
 
+#views.active {
+	height: 1px;
+	overflow: hidden;
+}
+
+#loadTips div p {
+	font-size: 20px;
+	text-align: center;
+	padding: 10px;
+}
+
 /***************** Funnel View ********************/
 #FunnelView #cart {
 	padding: 10px;
@@ -73,4 +84,7 @@
 	width: 100%;
 	table-layout:fixed;
 	margin: 0;
+}
+
+#TimeSeriesView #ts_chart {
 }

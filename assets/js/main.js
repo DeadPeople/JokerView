@@ -1,5 +1,4 @@
 var REGION = "REGION";
-//var TYPE = "TYPE";
 var myPara = new Array();
 
 $(document).ready(function() {
@@ -12,21 +11,7 @@ $(document).ready(function() {
 		myPara[REGION] = $(this).html();
 	});
 	
-	/*myPara[TYPE] = $("#tabPage a.btn.active").attr("data-type");
-	$("#tabPage a.btn").click(function(){
-		myPara[TYPE] = $(this).attr("data-type");
-		loadView();
-	});*/
-	
-	
 	// global navbar init
 	$("#ddl_company").dropDown();
 	$("#ddl_country").dropDown();
 });
-
-/*function loadView() {
-	try {
-		displayTargetView(myPara[TYPE]);
-	} catch(e) {
-	}
-}*/

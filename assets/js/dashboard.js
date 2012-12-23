@@ -120,7 +120,9 @@ function bindView() {
 		
 		// find the tab exist or not
 		var myUl = $(this).parent();
-		if(myUl.attr("slide-target") != undefined && $(this).attr("data-auto-gen") != undefined) {
+		if(
+			myUl.attr("slide-target") != undefined && $(this).attr("data-auto-gen") != undefined
+		) {
 			var myToggle = $("[slide-toggle='" + myUl.attr("slide-target") + "']");
 			cur_url = myToggle.attr("data-tab-path");
 			cur_css = myToggle.attr("data-tab-css");
@@ -130,6 +132,12 @@ function bindView() {
 			cur_css = $(this).attr("data-css");
 			cur_script = $(this).attr("data-script");
 		}
+		if(cur_url == undefined) {
+			cur_url = $(this).attr("data-path");
+			cur_css = $(this).attr("data-css");
+			cur_script = $(this).attr("data-script");
+		}
+		//console.log("["+myUl.attr("slide-target") + "/" + ($(this).attr("data-auto-gen") == "" ? 1 : 0)+"]");
 		
 		addCSSFile(cur_css, "../assets/css/" + cur_css);
 		addScriptFile(cur_script, "../assets/js/" + cur_script, function() {

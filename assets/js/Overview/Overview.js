@@ -177,7 +177,13 @@ function doScript() {
 			x: -10,
 			y: 100,
 			borderWidth: 0
-		}
+		},
+		exporting: {
+			buttons: {
+				printButton: {enabled: false},
+				exportButton: {enabled: false}
+			}
+		},
 	}
 	
 	bindJSON(object, "../mockup/users.txt", {rnd: (new Date()).getTime()}, function(data){
