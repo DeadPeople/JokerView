@@ -1,4 +1,10 @@
-﻿<div id="operationBar">
+﻿<?php 
+	if(isset($_GET['my'])) {
+		echo "test data : ".$_GET['my'];
+	}
+?>
+
+<div id="operationBar">
 	<div id="tabPage" class="btn-group" data-toggle="buttons-radio">
 		<a class="btn btn-inverse active" data-type="funnel">Funnel</a>
 		<a class="btn btn-inverse" data-type="timeseries">Time Series</a>

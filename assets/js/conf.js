@@ -1,5 +1,5 @@
 var regions = [
-	{"title": "Homepage", },
+	{"title": "Homepage", data: {my: "abc"} },
 	{"title": "Search", },
 	{"title": "Browse", },
 	{"title": "Registration", },
@@ -23,7 +23,7 @@ var catalog =
 		"script": "Overview/Overview.js",
 		"default": true,
 		"tab": true,
-		"taburl": "Overview/Common.html",
+		"taburl": "Overview/Common.php",
 		"tabcss": "Overview/Common.css",
 		"tabscript": "Overview/Common.js",
 		"children": regions,

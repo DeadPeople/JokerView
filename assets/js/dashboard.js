@@ -59,6 +59,7 @@ $(document).ready(function(){
 			var item = children[two];
 			
 			var subtitle = item["title"];
+			var data = item["data"];
 			var url = item["url"];
 			var css = item["css"];
 			var script = item["script"];
@@ -70,6 +71,7 @@ $(document).ready(function(){
 			$subtitle.html(subtitle);
 			$li.append($subtitle);
 			
+			$li.data("data", data);
 			if(url == undefined) {
 				$li.attr("data-path", title + "/" + subtitle + ".html");
 				$li.attr("data-auto-gen", "");
@@ -137,14 +139,16 @@ function bindView() {
 			cur_css = $(this).attr("data-css");
 			cur_script = $(this).attr("data-script");
 		}
-		//console.log("["+myUl.attr("slide-target") + "/" + ($(this).attr("data-auto-gen") == "" ? 1 : 0)+"]");
 		
 		addCSSFile(cur_css, "../assets/css/" + cur_css);
 		addScriptFile(cur_script, "../assets/js/" + cur_script, function() {
 			done_script = true;
 			delayStart();
 		});
-		$.get(cur_url, {rnd: Math.random()}, function(data){
+		
+		var postData = $(this).data("data");
+		if(postData == undefined) postData = {rnd: Math.random()};
+		$.get(cur_url, postData, function(data){
 			$("#content").html(data);
 			
 			// move the operation bar into navgation bar
