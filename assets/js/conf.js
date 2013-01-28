@@ -1,5 +1,5 @@
 var regions = [
-	{"title": "Homepage", data: {my: "abc"} },
+	{"title": "Homepage", data: {my: "abcvvv"} },
 	{"title": "Search", },
 	{"title": "Browse", },
 	{"title": "Registration", },

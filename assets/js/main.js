@@ -14,4 +14,5 @@ $(document).ready(function() {
 	// global navbar init
 	$("#ddl_company").dropDown();
 	$("#ddl_country").dropDown();
+	$("#ddl_time").dropDown();
 });
